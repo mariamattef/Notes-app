@@ -16,7 +16,8 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
-        theme: ThemeData.dark(),
+        theme: ThemeData(
+            brightness: Brightness.dark, fontFamily: 'Mochiy Pop One'),
         home: const NotesView(),
       ),
     );
