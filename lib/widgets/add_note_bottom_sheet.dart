@@ -22,6 +22,7 @@ class AddNoteBottomSheet extends StatelessWidget {
               print('failed to add notes ${state.errorMessage}');
             }
           },
+          
           builder: (context, state) {
             return ModalProgressHUD(
               inAsyncCall: state is AddNoteLoading ? true : false,
