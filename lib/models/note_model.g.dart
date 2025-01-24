@@ -17,10 +17,10 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return NoteModel(
-      titlr: fields[0] as String,
+      title: fields[0] as String,
       subtitle: fields[1] as String,
       date: fields[2] as String,
-      color: fields[3] as int,
+      color: fields[3] as double,
     );
   }
 
@@ -29,7 +29,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
     writer
       ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.titlr)
+      ..write(obj.title)
       ..writeByte(1)
       ..write(obj.subtitle)
       ..writeByte(2)
