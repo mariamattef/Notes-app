@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:notesapp/models/note_model.dart';
 import 'package:notesapp/views/edit_notes_view.dart';
 
@@ -16,10 +15,9 @@ class NoteItem extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
-          color:  Color(note.color)
-          //  Color(note.color),
-        ),
+            borderRadius: BorderRadius.circular(10.r), color: Color(note.color)
+            //  Color(note.color),
+            ),
         child: Padding(
           padding: const EdgeInsets.only(left: 16, top: 24, bottom: 24),
           child: Column(
@@ -41,10 +39,15 @@ class NoteItem extends StatelessWidget {
                         fontSize: 17.sp, color: Colors.black.withAlpha(130)),
                   ),
                 ),
-                trailing: Icon(
-                  Icons.delete,
-                  size: 28.sp,
-                  color: Colors.black,
+                trailing: IconButton(
+                  onPressed: () {
+                    note.delete();
+                  },
+                  icon: Icon(
+                    Icons.delete,
+                    size: 28.sp,
+                    color: Colors.black,
+                  ),
                 ),
               ),
               Padding(
