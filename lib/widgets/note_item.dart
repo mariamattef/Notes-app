@@ -36,7 +36,7 @@ class NoteItem extends StatelessWidget {
                   child: Text(
                     'Note Description with instructions',
                     style: TextStyle(
-                        fontSize: 17.sp, color: Colors.black.withOpacity(.5)),
+                        fontSize: 17.sp, color: Colors.black.withAlpha(9)),
                   ),
                 ),
                 trailing: Icon(
@@ -50,7 +50,7 @@ class NoteItem extends StatelessWidget {
                 child: Text(
                   'December 21,2024',
                   style: TextStyle(
-                      fontSize: 14.sp, color: Colors.black.withOpacity(.5)),
+                      fontSize: 14.sp, color: Colors.black.withAlpha(9)),
                 ),
               ),
             ],
