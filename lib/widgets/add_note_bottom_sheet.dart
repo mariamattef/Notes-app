@@ -21,9 +21,14 @@ class AddNoteBottomSheet extends StatelessWidget {
         child: BlocConsumer<AddNotesCubit, AddNotesState>(
           listener: (context, state) {
             if (state is AddNoteSuccess) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Note added successfully!')));
               Navigator.pop(context);
             }
             if (state is AddNoteFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.errorMessage)),
+              );
               print('failed to add notes ${state.errorMessage}');
             }
           },

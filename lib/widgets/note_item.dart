@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:notesapp/models/note_model.dart';
 import 'package:notesapp/views/edit_notes_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigate to the note details screen
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const EditNotes()));
       },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-          color: const Color(0xffFFcc80),
+          color:  Color(note.color)
+          //  Color(note.color),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 16, top: 24, bottom: 24),
@@ -25,7 +27,7 @@ class NoteItem extends StatelessWidget {
             children: [
               ListTile(
                 title: Text(
-                  'Flutter Tips',
+                  note.title,
                   style: TextStyle(
                     fontSize: 26.sp,
                     color: Colors.black,
@@ -34,9 +36,9 @@ class NoteItem extends StatelessWidget {
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 8),
                   child: Text(
-                    'Note Description with instructions',
+                    note.subtitle,
                     style: TextStyle(
-                        fontSize: 17.sp, color: Colors.black.withAlpha(9)),
+                        fontSize: 17.sp, color: Colors.black.withAlpha(130)),
                   ),
                 ),
                 trailing: Icon(
@@ -48,9 +50,9 @@ class NoteItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 24),
                 child: Text(
-                  'December 21,2024',
+                  note.date,
                   style: TextStyle(
-                      fontSize: 14.sp, color: Colors.black.withAlpha(9)),
+                      fontSize: 14.sp, color: Colors.black.withAlpha(130)),
                 ),
               ),
             ],
