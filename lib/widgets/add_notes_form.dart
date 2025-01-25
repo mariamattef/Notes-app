@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:notesapp/cubits/add_notes_cubit/cubit/add_notes_cubit.dart';
 import 'package:notesapp/models/note_model.dart';
+import 'package:notesapp/widgets/color_list_view.dart';
 import 'package:notesapp/widgets/custom_button.dart';
 import 'package:notesapp/widgets/custom_text_form_field.dart';
 
@@ -45,18 +46,17 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
           ),
           SizedBox(
-            height: 80.h,
+            height: 25.h,
+          ),
+          const ColorsListView(),
+          SizedBox(
+            height: 5.h,
           ),
           CustomButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                var note = NoteModel(
-                    title: title!,
-                    subtitle: subtitle!,
-                    date: DateFormat('MMM d, yyyy').format(DateTime.now()),
-                    color: Colors.cyan.value);
-                BlocProvider.of<AddNotesCubit>(context).addNotes(note);
+                addNoteMethod(context);
               } else {
                 setState(() {
                   autovalidateMode = AutovalidateMode.always;
@@ -72,4 +72,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
       ),
     );
   }
+
+  void addNoteMethod(BuildContext context) {
+    var note = NoteModel(
+        title: title!,
+        subtitle: subtitle!,
+        date: DateFormat('MMM d, yyyy').format(DateTime.now()),
+        color: Colors.cyan.value);
+    BlocProvider.of<AddNotesCubit>(context).addNotes(note);
+  }
 }
+
