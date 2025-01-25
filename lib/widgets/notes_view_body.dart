@@ -7,6 +7,7 @@ import 'package:notesapp/widgets/notes_list_view.dart';
 class NotesViewBody extends StatefulWidget {
   const NotesViewBody({super.key});
 
+
   @override
   State<NotesViewBody> createState() => _NotesViewBodyState();
 }
