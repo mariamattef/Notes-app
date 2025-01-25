@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notesapp/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notesapp/helper/constants.dart';
 import 'package:notesapp/models/note_model.dart';
+import 'package:notesapp/views/edit_notes_color_list.dart';
+import 'package:notesapp/widgets/color_list_view.dart';
 import 'package:notesapp/widgets/custom_app_bar.dart';
 import 'package:notesapp/widgets/custom_text_form_field.dart';
 
@@ -16,6 +19,9 @@ class EditNotesview extends StatefulWidget {
 
 class _EditNotesviewState extends State<EditNotesview> {
   String? title, content;
+  @override
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +38,7 @@ class _EditNotesviewState extends State<EditNotesview> {
               onPressed: () {
                 widget.note.title = title ?? widget.note.title;
                 widget.note.subtitle = content ?? widget.note.subtitle;
+
                 widget.note.save();
                 BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 Navigator.pop(context);
@@ -55,6 +62,12 @@ class _EditNotesviewState extends State<EditNotesview> {
               onChanged: (value) {
                 content = value;
               },
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            EditNotesColorsList(
+              note: widget.note,
             ),
           ],
         ),
